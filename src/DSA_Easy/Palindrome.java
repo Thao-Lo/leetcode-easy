@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Palindrome {
 	public static void main(String[] args) {
-
+		//hello
 		Scanner keyboard = new Scanner(System.in);
 
 		System.out.println(Math.ceil((double) 9 / 2));
