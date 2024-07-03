@@ -28,6 +28,8 @@ public class TwoSum {
 		System.out.print(Arrays.toString(resultArray));		
 
 	}
+	
+	//Brute Force
 	 public static int[] twoSum(int[] nums, int target) {
 		 
 		 int index1 = 0;
@@ -45,6 +47,7 @@ public class TwoSum {
 		 
 		 return resultArray;
 	 }
+	 
 	 public static int[] twoSumHash(int[] nums, int target) {
 		    HashMap<Integer, Integer> numToIndex = new HashMap<>();
 
@@ -63,3 +66,4 @@ public class TwoSum {
 		}
 
 }
+//Binary search! for sorted array only 

@@ -34,9 +34,10 @@ public class SeatCounting {
 	                System.out.println(j);
 	            }
 	        }
+	
 	}
-
 }
+
 //int count = 0;
 //int start = 0;
 //int end = 0;
@@ -62,4 +63,5 @@ public class SeatCounting {
 //	count = 0;
 //	start = 0;
 //	end = 0;
+
 //}
