@@ -3,7 +3,7 @@ package DSA_Easy;
 public class RemoveDuplicates27 {
 
 	public static void main(String[] args) {
-		int[] nums = { 1, 1, 2 };
+		int[] nums = { 1, 1, 2,2,3 };
 
 		int[] expectedNums = new int[nums.length];
 		int num = nums[0];
