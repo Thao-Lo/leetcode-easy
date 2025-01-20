@@ -1,7 +1,7 @@
 package LinkedList;
 
 public class LinkedList {
-	Node head;
+	public Node head;
 
 	public LinkedList() {
 		this.head = null;
@@ -25,7 +25,6 @@ public class LinkedList {
 
 		newHead.next = head;
 		head = newHead;
-
 	}
 
 	public void deleteNode(int data) {
