@@ -37,9 +37,13 @@ public class PalindromeLinkedList_234 {
 		return true;
 	}
 
+	//// 10ms beast 26.73% 57.85MB beats 82.81%
 	private static boolean isPalindrome2(ListNode head) {
 		if (head == null) {
 			return false;
+		}
+		if(head.next == null) {
+			return true;
 		}
 		ListNode slow = head;
 		ListNode fast = head;
@@ -50,12 +54,15 @@ public class PalindromeLinkedList_234 {
 			slow = slow.next;			
 			fast = fast.next.next;
 		}
-		ListNode current = slow;
-		while(current != null) {
-			if(current.val != stack.pop()) {
+		if(fast!= null) {
+			slow = slow.next;
+		}
+		
+		while(slow != null) {
+			if(slow.val != stack.pop()) {
 				return false;
 			}
-			current = current.next;
+			slow = slow.next;
 		}
 		
 		return true;
