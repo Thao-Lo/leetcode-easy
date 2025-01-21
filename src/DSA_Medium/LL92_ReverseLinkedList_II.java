@@ -27,46 +27,35 @@ public class LL92_ReverseLinkedList_II {
 		}
 		
 		// travel through the list to find node left - 1
-		Node current = head;
-		int count = 1;
-		Node beforeLeft = null;
-		Node start = null;
-		while (current.next != null) {
-			if (count == left - 1) {
-				beforeLeft = current;
-				start = current.next;
-				break;
-			}
-			current = current.next;
-			count += 1;
+		Node dummy = new Node (0);
+		dummy.next = head;
+		
+		//start from dummy position to node before left
+		Node beforeLeft = dummy;
+		for(int i = 1; i < left; i++) {
+			beforeLeft = beforeLeft.next;
 		}
-		// reverse the list to node right
-		Node dummy = start;
+		
+		// reverse the list to node right		
 		Node prev = null;
+		Node current = beforeLeft.next; //list start, Node at left position
 		Node afterRight = null;
-		Node listStart = null;
-		Node listEnd = null;
-		while (dummy != null) {
-			Node next = dummy.next;
-			count += 1;
-			if (count == right) {
-				afterRight = dummy.next; // breakpoint right to right+1 can be null
-				dummy.next = prev;
-				listEnd = dummy;
-				break;
-			}
-			dummy.next = prev;
-			if (prev == null) {
-				listStart = dummy;
-			}
-			prev = dummy;
-			dummy = next;
-		}
+		
+		// reverse list to Node at position right
+		for( int i = left; i <= right; i++) {
+			Node next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}			
+		afterRight = current; // Node after right position right+1
+		
 		// connect node - 1 to right, connect left to right + 1 or right.next
-		beforeLeft.next = listEnd;
-		listStart.next = afterRight;
+		beforeLeft.next.next = afterRight; // Node at left position (beforeLeft.next).next
+		beforeLeft.next = prev; //prev is Node at right position
+		
 
-		return head;
+		return dummy.next; //head
 	}
 
 }
