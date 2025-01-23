@@ -8,6 +8,7 @@ public class LL141_LinkedListCycle {
 
 	}
 	//solve problem using Set
+	//store all node in the set then loop again On2 time On space
 	
 	// O1 memory
 	//Floyd's Cycle detection alg - tho rua
@@ -40,7 +41,10 @@ public class LL141_LinkedListCycle {
 
 		Node current = head;		
 		while (current != null && current.next != null) {
+			//reset node temp 
 			Node temp = head;
+			
+			//run from head to current again when current moving
 			while (temp != current) {
 				if(temp == current.next) {
 					return true;
