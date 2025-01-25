@@ -23,7 +23,7 @@ public class Set762_PrimeNumberofSetBitsInBinary {
 				}
 			}
 			// check isPrimeNumber
-			if (isPrimeNumber(countOne)) {
+			if (isPrimeNumber1(countOne)) {
 				// filter numbers with prime set
 				countPrime++;
 			}
@@ -32,7 +32,7 @@ public class Set762_PrimeNumberofSetBitsInBinary {
 		return countPrime;
 	}
 
-	public static boolean isPrimeNumber(int num) {
+	public static boolean isPrimeNumber1(int num) {
 		if (num <= 1) {
 			return false;
 		}
@@ -42,6 +42,25 @@ public class Set762_PrimeNumberofSetBitsInBinary {
 		// range between 2 and int square root of num
 		// 29 -> 5, 2,3,5 -> 29 %2,3,5 != 0 -> false -> Prime
 		return IntStream.rangeClosed(2, (int) Math.sqrt(num)).noneMatch(n -> num % n == 0);
+	}
+
+	public static boolean isPrimeNumber2(int num) {
+		if (num <= 1) {
+			return false;
+		}
+		if (num <= 3) {
+			return true;
+		}
+		int sqrt = (int) Math.sqrt(num);
+		// if num can % any number except 1, it is not a Prime
+		// Prime only have 1 x num pair
+		// 10 -> 1 x 10, 2 x 5, square root of 10 == 3, 10%2 == 0
+		for (int i = 2; i <= sqrt; i++) {
+			if (num % i == 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }
