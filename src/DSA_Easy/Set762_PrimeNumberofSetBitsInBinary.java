@@ -5,11 +5,12 @@ import java.util.stream.IntStream;
 public class Set762_PrimeNumberofSetBitsInBinary {
 
 	public static void main(String[] args) {
-		int output = countPrimeSetBits(10, 15);
+		int output = countPrimeSetBits2(10, 15);
 		System.out.println(output);
 	}
 
-	public static int countPrimeSetBits(int left, int right) {
+	// use Integer.toBinaryString(number), return string binary number
+	public static int countPrimeSetBits1(int left, int right) {
 		// numbers between left and right
 		int countPrime = 0;
 		for (int i = left; i <= right; i++) {
@@ -25,6 +26,22 @@ public class Set762_PrimeNumberofSetBitsInBinary {
 			// check isPrimeNumber
 			if (isPrimeNumber1(countOne)) {
 				// filter numbers with prime set
+				countPrime++;
+			}
+		}
+
+		return countPrime;
+	}
+
+	// use Integer.bitCount(number) to return total of 1 in binary
+	public static int countPrimeSetBits2(int left, int right) {
+		// numbers between left and right
+		int countPrime = 0;
+		for (int i = left; i <= right; i++) {
+			// count number of 1
+			int setBitCount = Integer.bitCount(i);
+			// check isPrimeNumber
+			if (isPrimeNumber1(setBitCount)) {
 				countPrime++;
 			}
 		}
