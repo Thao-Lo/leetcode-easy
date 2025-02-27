@@ -9,13 +9,47 @@ public class A1122_RelativeSortArray {
 		int[] arr1 = { 2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19 };
 		int[] arr2 = { 2, 1, 4, 3, 9, 6 };
 
-		relativeSortArray(arr1, arr2);
+		relativeSortArray1(arr1, arr2);
 
 		for (int i : arr1) {
 			System.out.print(i + " ");
 		}
 	}
 
+	// Counting Sort int[] freq = new int[maxNum + 1];
+	public static int[] relativeSortArray1(int[] arr1, int[] arr2) {
+		int max = 0;
+		for (int num : arr1) {
+			if (num > max) {
+				max = num;
+			}
+		}
+		// add frequecy to index
+		int[] reg = new int[max + 1];
+		for (int i = 0; i < arr1.length; i++) {
+			reg[arr1[i]]++;
+		}
+		
+		//start from arr2
+		int index = 0; //of arr1
+		for (int num : arr2) {
+			while(reg[num] > 0) {
+				arr1[index++] = num;
+				reg[num] --;
+			}
+		}
+		//only for index in reg, value > 0
+		for(int i = 0; i <= max; i++) {
+			while(reg[i] > 0) {
+				arr1[index++] = i;
+				reg[i] --;
+			}
+		}
+		
+		return arr1;
+	}
+
+	// using Map
 	public static int[] relativeSortArray(int[] arr1, int[] arr2) {
 		// arr length = a1 lenght
 
@@ -49,7 +83,7 @@ public class A1122_RelativeSortArray {
 			}
 		}
 		Arrays.sort(arr1, start, arr1.length);
-		
+
 		return arr1;
 	}
 }
