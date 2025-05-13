@@ -4,8 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class A121_BestTimeToBuyAndSellStock {
-
 	public int maxProfit(int[] prices) {
+		int minPrice = Integer.MAX_VALUE;
+		int maxProfit = 0;
+		
+		for(int price : prices) {
+			if(price < minPrice) {
+				minPrice = price;
+			}else { //price next day; price > minPrice
+				maxProfit = Math.max(maxProfit, price - minPrice);
+			}			
+		}	
+		
+		return maxProfit;
+	}
+
+	//WRONG
+	public int maxProfitTwo(int[] prices) {
 		if (prices.length == 1) {
 			return 0;
 		}
