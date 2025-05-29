@@ -23,5 +23,21 @@ public class A283_MoveZeroes {
 			sec++;	
 		}
 	}
+	public void moveZeroes_Two(int[] nums) {		
+		if(nums == null || nums.length <= 1) return;
+		
+		int current = 0;
+		
+		for(int num : nums) {
+			if(num != 0) {
+				nums[current++] = num; //shift all numbers to the front
+			}			
+		}
+		while(current < nums.length) {
+			nums[current++] = 0;
+		}
+		
+	}
+	//nums[current++] = num; -> nums[current] = num; current+=1;
 
 }
