@@ -19,7 +19,7 @@ public class Stack155_MinStack {
 		if(minStack.isEmpty()) {
 			minStack.add(val);
 		}else {
-			minStack.add(Math.min(val, minStack.peek()));
+			minStack.add(Math.min(val, minStack.peek())); // 5 5 5 2 2 2 1 0 0
 		}		
 	}
 
