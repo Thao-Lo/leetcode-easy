@@ -1,5 +1,6 @@
 package DSA_Easy;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,6 +29,18 @@ public class A217_ContainsDuplicate {
 				return true;
 			}
 		}				
+		return false;
+	}
+	
+	//SORTED ARRAY
+	public boolean containsDuplicateThree(int[] nums) {
+		Arrays.sort(nums);
+				
+		for(int i = 1; i < nums.length; i++) {
+			if(nums[i] == nums[i-1]) {
+				return true;
+			}
+		}
 		return false;
 	}
 	
