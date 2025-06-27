@@ -7,47 +7,41 @@ public class A121_BestTimeToBuyAndSellStock {
 	public int maxProfit(int[] prices) {
 		int minPrice = Integer.MAX_VALUE;
 		int maxProfit = 0;
-		
-		for(int price : prices) {
-			if(price < minPrice) {
+
+		for (int price : prices) {
+			if (price < minPrice) {
 				minPrice = price;
-			}else { //price next day; price > minPrice
+			} else { // price next day; price > minPrice
 				maxProfit = Math.max(maxProfit, price - minPrice);
-			}			
-		}	
-		
+			}
+		}
+
 		return maxProfit;
 	}
 
-	//WRONG
+	// WRONG
 	public int maxProfitTwo(int[] prices) {
-		if (prices.length == 1) {
+		if (prices.length < 2) {
 			return 0;
 		}
-		int min = prices[0];
-		int max = prices[0];
+		int maxProfit = 0;
+
 		Map<String, Integer> map = new HashMap<>();
 		map.put("max", 0);
 		map.put("min", 0);
-		for (int i = 1; i < prices.length; i++) {
-			if (prices[i] >= max) {
-				max = prices[i];
-				map.put("max", i);
-			}
-			if (prices[i] <= min) {
-				min = prices[i];
-				map.put("min", i);
-				if (map.get("max") < i) {
-					max = 0;
-					map.put("max", 0);
-				}
-			}
-		}
-		if (map.get("max") <= map.get("min")) {
-			return 0;
-		}
-		int price = prices[map.get("max")] - prices[map.get("min")];
 
-		return price;
+		for (int i = 1; i < prices.length; i++) {
+			if (prices[i] <= prices[map.get("min")]) {
+				map.put("min", i); //get price and date to buy stock
+			}
+			int profit = prices[i] - prices[map.get("min")]; //calculate profit each day
+			
+			if(profit > maxProfit) {
+				maxProfit = profit;	//update max profit 
+				map.put("max", i); //update date to sell stock
+			}			
+		}
+
+		return maxProfit;
 	}
 }
