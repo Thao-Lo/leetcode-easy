@@ -26,9 +26,6 @@ public class T938_Range_Sum_Of_BST {
 		return acc;
 
 	}
-
-	
-
 }
 
 // low and high -> find sum within the range
