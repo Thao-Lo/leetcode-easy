@@ -15,7 +15,7 @@ public class BinaryTree {
 			root.right = insertRec(root.right, val);
 		}
 		return root;
-
+		
 	}
 
 	private void displayRec(TreeNode node) {

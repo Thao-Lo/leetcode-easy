@@ -10,7 +10,7 @@ public class B226_Invert_Binary_Tree {
 		// recursive invert sub tree
 		TreeNode left = invertTree(root.left);
 		TreeNode right = invertTree(root.right);
-
+		
 		// Swap
 		root.left = right;
 		root.right = left;
