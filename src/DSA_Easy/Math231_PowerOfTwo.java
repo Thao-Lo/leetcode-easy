@@ -7,21 +7,21 @@ public class Math231_PowerOfTwo {
 
 	public boolean isPowerOfTwo(int n) {
 		// odd number, not 1
-		if (n == 1 || n == 2) {
-			return true;
-		}
-		if (n % 2 != 0) {
+		if (n <= 0) {
 			return false;
 		}
-
 		int test = 1;
 		while (n > test) {
 			test *= 2;
-			if (n == test) {
-				return true;
-			}
-
 		}
-		return false;
+		return test == n;
+	}
+	
+	//bit manipulation: (n & (n - 1)) == 0
+	public boolean isPowerOfTwoUpdated(int n) {
+		return n > 0 && (n & (n - 1)) == 0;
 	}
 }
+
+// 1000 (n: 8) & 0111 (n-1: 7) -> 1 & 0 || 0 & 1 || 0 & 0 == 0
+// 1 & 1 == 1; -> not cancel out -> not power of 2
